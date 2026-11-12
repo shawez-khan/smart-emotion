@@ -458,6 +458,7 @@ def get_summary():
 #  HEALTH CHECK
 # ─────────────────────────────────────────────
 @app.route("/api/health", methods=["GET"])
+@app.route("/healthz", methods=["GET"])
 def health():
     return jsonify({
         "status":       "ok",
