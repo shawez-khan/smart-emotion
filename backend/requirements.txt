@@ -12,8 +12,8 @@ pyjwt==2.8.0
 # Computer Vision (Headless for cloud & serverless compatibility)
 opencv-python-headless==4.9.0.80
 
-# Deep Learning
-tensorflow==2.15.0       # or tensorflow-cpu==2.15.0 for CPU-only
+# Deep Learning (CPU-optimized for cloud deployment)
+tensorflow-cpu>=2.15.0,<=2.17.0
 numpy==1.26.4
 
 # Data processing / visualization (for training only)
