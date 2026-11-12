@@ -13,14 +13,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend application code and model
-COPY . .
+# Setup Hugging Face compatible non-root user (UID 1000)
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH
+
+WORKDIR /home/user/app
+COPY --chown=user . .
 
 ENV FLASK_ENV=production
 ENV HOST=0.0.0.0
-ENV PORT=5000
+ENV PORT=7860
 
-EXPOSE 5000
+EXPOSE 7860
 
-# Production WSGI runner with 2 workers and 120s timeout for CNN inference
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "app:app"]
+# Production WSGI runner binding to port 7860 (Hugging Face default)
+CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--workers", "2", "--timeout", "120", "app:app"]
