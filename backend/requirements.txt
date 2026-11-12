@@ -1,0 +1,28 @@
+# EmotiLearn Python Backend Dependencies
+# ----------------------------------------
+# Install with:  pip install -r requirements.txt
+
+# Web Framework
+flask==3.0.2
+flask-cors==4.0.0
+
+# Authentication
+pyjwt==2.8.0
+
+# Computer Vision
+opencv-python==4.9.0.80
+
+# Deep Learning
+tensorflow==2.15.0       # or tensorflow-cpu==2.15.0 for CPU-only
+numpy==1.26.4
+
+# Data processing / visualization (for training only)
+matplotlib==3.8.3
+
+# Database
+pymongo==4.6.2
+python-dotenv==1.0.1
+
+# Production WSGI Servers
+gunicorn==21.2.0        # For Linux / Containerized deployment
+waitress==3.0.0         # For Windows / Production deployment
